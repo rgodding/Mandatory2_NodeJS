@@ -1,1 +1,1 @@
-export const adminkey = 'admin-key';
+export const adminkey = 'XCX2REGGwtdQ07mKmZX0u8RhxWy1';

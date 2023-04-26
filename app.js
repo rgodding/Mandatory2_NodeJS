@@ -14,16 +14,11 @@ app.use(
   })
 );
 
-import frontpageRouter from "./routers/frontpageRouter.js"
-import loginRouter from "./routers/loginRouter.js"
-import adminRouter from "./routers/adminRouter.js"
-import secretDataRouter from "./routers/data/secretDataRouter.js"
-const routes = [
-    frontpageRouter,
-    loginRouter,
-    adminRouter,
-    secretDataRouter
-]
+import frontpageRouter from './routers/frontpageRouter.js';
+import loginRouter from './routers/loginRouter.js';
+import adminRouter from './routers/adminRouter.js';
+import secretDataRouter from './routers/secretDataRouter.js';
+const routes = [frontpageRouter, loginRouter, adminRouter, secretDataRouter];
 
 app.use(routes);
 

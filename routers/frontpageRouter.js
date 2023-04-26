@@ -4,10 +4,7 @@ import { getFrontpagePage } from '../util/pages.js';
 const router = Router();
 
 router.get('/', (req, res) => {
-  if(req.session.user === undefined){
-    req.session.user = {name: 'anon', userkey: 'anon'}
-  }
-  res.send(getFrontpagePage(req.session.user.userkey))
+  res.send(getFrontpagePage(req.session.userkey));
 });
 
 export default router;

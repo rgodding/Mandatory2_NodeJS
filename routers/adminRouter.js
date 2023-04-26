@@ -1,15 +1,11 @@
 import { Router } from 'express';
-import { requireLogin } from './tools/requireLogin.js';
 import { getAdminPage } from '../util/pages.js';
+import { requireLogin } from './tools/requireLogin.js';
 
 const router = Router();
 
 router.get('/admin', requireLogin, (req, res) => {
-  res.send(getAdminPage(req.session.user.userkey))
+  res.send(getAdminPage(req.session.userkey));
 });
-
-router.get('/admin/secret-data', requireLogin, async (req, res) => {
-  res.send({ data: 'secret-data'})
-})
 
 export default router;
