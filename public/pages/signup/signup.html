@@ -1,0 +1,47 @@
+<div class="container-fluid mt-3 ms-3">
+    <div class="row">
+        <h1>Sign Up Page</h1>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <form id="signup-form" method="POST">
+                <div class="mb-3">
+                    <label for="emailInput" class="form-label">Email address</label>
+                    <input type="text" class="form-control" id="emailInput" name="emailInput" placeholder="Email">
+                </div>
+                <div class="mb-3">
+                    <label for="passwordInput" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="passwordInput" name="passwordInput" placeholder="Password">
+                </div>
+                <div class="mb-3">
+                    <label for="passwordConfirmInput" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="passwordConfirmInput" name="passwordConfirmInput" placeholder="Password">
+                    <div id="passwordMatchError" class="text-danger d-none">Passwords do not match</div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="mb-3">
+                    <p>Already have an account? <a href="/login">Login</a> now!</p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    const signupForm = document.getElementById('signup-form');
+    const passwordInput = document.getElementById('passwordInput');
+    const passwordConfirmInput = document.getElementById('passwordConfirmInput');
+    const passwordMatchError = document.getElementById('passwordMatchError');
+
+    signupForm.addEventListener('submit', (event) => {
+        if(passwordInput.value !== passwordConfirmInput.value) {
+            passwordMatchError.classList.remove('d-none')
+            event.preventDefault();
+        } else {
+            passwordMatchError.classList.add('d-none')
+        }
+    })
+</script>
+
+<script>
+</script>

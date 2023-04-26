@@ -6,4 +6,5 @@ export const footerPath = "./public/components/footer/footer.html";
 
 export const frontpagePath = "./public/pages/frontpage/frontpage.html";
 export const loginPath = "./public/pages/login/login.html";
+export const signupPath = "./public/pages/signup/signup.html";
 export const adminPath = "./public/pages/admin/admin.html";
