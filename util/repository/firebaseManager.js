@@ -1,5 +1,5 @@
 import { database } from '../../config/firebase.js';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, signOut } from 'firebase/auth';
 
 const auth = getAuth();
 
@@ -17,7 +17,6 @@ async function loginToAccount(email, password) {
       });
   });
 }
-// TODO Create
 async function createAccount(email, password) {
   return new Promise((resolve, reject) => {
     createUserWithEmailAndPassword(auth, email, password)
@@ -32,7 +31,6 @@ async function createAccount(email, password) {
       })
   })
 }
-// TODO Signout
 function signOutOfAccount(){
     signOut(auth).then(() => {
         // Signed out
@@ -40,9 +38,19 @@ function signOutOfAccount(){
         // error?
     })
 }
+async function resetPassword(email){
+  try {
+    sendPasswordResetEmail(auth, email);
+    return true;
+  } catch (error) {
+    console.error(error)
+    return false;
+  }
+}
 
 export default {
     createAccount,
     loginToAccount,
-    signOutOfAccount
+    signOutOfAccount,
+    resetPassword
 }

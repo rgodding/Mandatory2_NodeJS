@@ -1,4 +1,4 @@
-import { frontpagePath, loginPath, signupPath, adminPath, navbarPath, navbarOptionsPath, navbarOptionsAdminPath, footerPath } from './store/paths.js';
+import { frontpagePath, loginPath, signupPath, forgotpasswordPath, adminPath, navbarPath, navbarOptionsPath, navbarOptionsAdminPath, footerPath } from './store/paths.js';
 import { adminkey } from './store/creds.js';
 import templateEngine from './templateEngine.js';
 
@@ -12,6 +12,7 @@ const navbarAdmin = templateEngine.readPage(navbarPath)
 const frontpage = templateEngine.readPage(frontpagePath);
 const login = templateEngine.readPage(loginPath);
 const signup = templateEngine.readPage(signupPath);
+const forgotpassword = templateEngine.readPage(forgotpasswordPath)
 const admin = templateEngine.readPage(adminPath);
 
 // Navbar Options
@@ -37,6 +38,12 @@ export function getSignupPage(userkey, config = {}) {
     .replace('$CSS_LINK', config.cssLink || '')
     .replace('$TAB_TITLE', config.tabTitle || 'Mandatory2');
 }
+export function getForgotPasswordPage(userkey, config = {}) {
+  return constructPage(forgotpassword, userkey)
+    .replace('$CSS_LINK', config.cssLink || '')
+    .replace('$TAB_TITLE', config.tabTitle || 'Mandatory2');
+}
+
 export function getAdminPage(userkey, config = {}) {
   return constructPage(admin, userkey)
     .replace('$CSS_LINK', config.cssLink || '')
