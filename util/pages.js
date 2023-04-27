@@ -1,6 +1,7 @@
 import { frontpagePath, loginPath, signupPath, forgotpasswordPath, adminPath, navbarPath, navbarOptionsPath, navbarOptionsAdminPath, footerPath } from './store/paths.js';
-import { adminkey } from './store/creds.js';
 import templateEngine from './templateEngine.js';
+import validateUid from '../routers/tools/validateUid.js';
+import dotenv from "dotenv/config";
 
 // Storage
 const navbarAnon = templateEngine.readPage(navbarPath)
@@ -45,14 +46,19 @@ export function getForgotPasswordPage(userkey, config = {}) {
 }
 
 export function getAdminPage(userkey, config = {}) {
-  return constructPage(admin, userkey)
+  if(validateUid(userkey)){
+    return constructPage(admin, userkey)
     .replace('$CSS_LINK', config.cssLink || '')
     .replace('$TAB_TITLE', config.tabTitle || 'Mandatory2');
+  } else {
+    return 'NAN';
+  }
+  
 }
 
 function constructPage(html, userkey) {
   let page = navbar;
-  if (adminkey(userkey)) {
+  if (validateUid(userkey)) {
     page = page.replace('$OPTIONS', navbarOptionsAdmin);
   } else {
     page = page.replace('$OPTIONS', navbarOptions);

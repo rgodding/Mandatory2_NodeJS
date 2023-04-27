@@ -1,6 +1,5 @@
 import fs from 'fs';
 import { navbarPath, footerPath, navbarOptionsPath, navbarOptionsAdminPath } from './store/paths.js';
-import { adminkey } from './store/creds.js';
 
 function renderPage(page, config = {}) {
   const navbar = getNavbar(config);
