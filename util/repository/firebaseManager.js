@@ -35,12 +35,8 @@ async function createAccount(email, password) {
 
 function signOutOfAccount() {
   signOut(auth)
-    .then(() => {
-      // Signed out
-    })
-    .catch((error) => {
-      // error?
-    });
+    .then(() => {})
+    .catch((error) => {});
 }
 
 async function resetPassword(email) {
@@ -48,7 +44,6 @@ async function resetPassword(email) {
     sendPasswordResetEmail(auth, email);
     return true;
   } catch (error) {
-    console.error(error);
     return false;
   }
 }

@@ -42,7 +42,6 @@ export function getForgotPasswordPage(userkey, config = {}) {
     .replace('$CSS_LINK', config.cssLink || '')
     .replace('$TAB_TITLE', config.tabTitle || 'Mandatory2');
 }
-
 export function getAdminPage(userkey, config = {}) {
   if (validateid(userkey)) {
     return constructPage(admin, userkey)
