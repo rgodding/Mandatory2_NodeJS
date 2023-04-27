@@ -16,15 +16,15 @@ app.use(
 
 import frontpageRouter from './routers/frontpageRouter.js';
 import loginRouter from './routers/loginRouter.js';
-import signupRouter from './routers/signupRouter.js'
-import forgotPasswordRouter from './routers/forgotPasswordRouter.js'
+import signupRouter from './routers/signupRouter.js';
+import forgotPasswordRouter from './routers/forgotPasswordRouter.js';
 import adminRouter from './routers/adminRouter.js';
 import secretDataRouter from './routers/secretDataRouter.js';
 const routes = [frontpageRouter, loginRouter, signupRouter, forgotPasswordRouter, adminRouter, secretDataRouter];
 
 app.use(routes);
 
-const PORT = 8081;
+const PORT = 8080;
 app.listen(PORT, (error) => {
   if (error) {
     console.log(error);

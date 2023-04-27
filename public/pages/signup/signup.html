@@ -11,11 +11,13 @@
                 </div>
                 <div class="mb-3">
                     <label for="passwordInput" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="passwordInput" name="passwordInput" placeholder="Password">
+                    <input type="password" class="form-control" id="passwordInput" name="passwordInput"
+                        placeholder="Password">
                 </div>
                 <div class="mb-3">
                     <label for="passwordConfirmInput" class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control" id="passwordConfirmInput" name="passwordConfirmInput" placeholder="Password">
+                    <input type="password" class="form-control" id="passwordConfirmInput" name="passwordConfirmInput"
+                        placeholder="Password">
                     <div id="passwordMatchError" class="text-danger d-none">Passwords do not match</div>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -34,7 +36,7 @@
     const passwordMatchError = document.getElementById('passwordMatchError');
 
     signupForm.addEventListener('submit', (event) => {
-        if(passwordInput.value !== passwordConfirmInput.value) {
+        if (passwordInput.value !== passwordConfirmInput.value) {
             passwordMatchError.classList.remove('d-none')
             event.preventDefault();
         } else {

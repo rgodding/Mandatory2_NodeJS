@@ -9,13 +9,13 @@ router.get('/forgot-password', (req, res) => {
 });
 
 router.post('/forgot-password', async (req, res) => {
-    const email = req.body.emailInput
-    const resetPassword = await firebaseManager.resetPassword(email)
-    if(resetPassword){
-      res.status(200).send('Password reset email sent')
-    } else {
-      res.status(500).send('Error sending password reset email');
-    }
-})
+  const email = req.body.emailInput;
+  const resetPassword = await firebaseManager.resetPassword(email);
+  if (resetPassword) {
+    res.status(200).send('Password reset email sent');
+  } else {
+    res.status(500).send('Error sending password reset email');
+  }
+});
 
 export default router;

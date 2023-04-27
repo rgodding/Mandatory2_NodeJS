@@ -1,19 +1,17 @@
 import { frontpagePath, loginPath, signupPath, forgotpasswordPath, adminPath, navbarPath, navbarOptionsPath, navbarOptionsAdminPath, footerPath } from './store/paths.js';
 import templateEngine from './templateEngine.js';
-import validateUid from '../routers/tools/validateUid.js';
-import dotenv from "dotenv/config";
+import dotenv from 'dotenv/config';
+import validateid from './validateid.js';
 
 // Storage
-const navbarAnon = templateEngine.readPage(navbarPath)
-.replace('$OPTIONS', templateEngine.readPage(navbarOptionsPath))
-const navbarAdmin = templateEngine.readPage(navbarPath)
-.replace('$OPTIONS', templateEngine.readPage(navbarOptionsAdminPath))
+const navbarAnon = templateEngine.readPage(navbarPath).replace('$OPTIONS', templateEngine.readPage(navbarOptionsPath));
+const navbarAdmin = templateEngine.readPage(navbarPath).replace('$OPTIONS', templateEngine.readPage(navbarOptionsAdminPath));
 
 // Pages
 const frontpage = templateEngine.readPage(frontpagePath);
 const login = templateEngine.readPage(loginPath);
 const signup = templateEngine.readPage(signupPath);
-const forgotpassword = templateEngine.readPage(forgotpasswordPath)
+const forgotpassword = templateEngine.readPage(forgotpasswordPath);
 const admin = templateEngine.readPage(adminPath);
 
 // Navbar Options
@@ -46,19 +44,18 @@ export function getForgotPasswordPage(userkey, config = {}) {
 }
 
 export function getAdminPage(userkey, config = {}) {
-  if(validateUid(userkey)){
+  if (validateid(userkey)) {
     return constructPage(admin, userkey)
-    .replace('$CSS_LINK', config.cssLink || '')
-    .replace('$TAB_TITLE', config.tabTitle || 'Mandatory2');
+      .replace('$CSS_LINK', config.cssLink || '')
+      .replace('$TAB_TITLE', config.tabTitle || 'Mandatory2');
   } else {
     return 'NAN';
   }
-  
 }
 
 function constructPage(html, userkey) {
   let page = navbar;
-  if (validateUid(userkey)) {
+  if (validateid(userkey)) {
     page = page.replace('$OPTIONS', navbarOptionsAdmin);
   } else {
     page = page.replace('$OPTIONS', navbarOptions);

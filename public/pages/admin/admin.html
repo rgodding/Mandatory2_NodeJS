@@ -13,10 +13,11 @@
 
 <script>
     const secretData = document.getElementById('secret-data');
-    function displaySecretData(){
-    fetch('/secret-data')
-    .then((response) => response.json())
-    .then((object) => {
-        secretData.innerHTML = JSON.stringify(object)
-    })};
+    function displaySecretData() {
+        fetch('/secret-data')
+            .then((response) => response.json())
+            .then((object) => {
+                secretData.innerHTML = JSON.stringify(object)
+            })
+    };
 </script>

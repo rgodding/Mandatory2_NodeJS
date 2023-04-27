@@ -17,6 +17,7 @@ async function loginToAccount(email, password) {
       });
   });
 }
+
 async function createAccount(email, password) {
   return new Promise((resolve, reject) => {
     createUserWithEmailAndPassword(auth, email, password)
@@ -28,29 +29,33 @@ async function createAccount(email, password) {
         const errorCode = error.code;
         const errorMessage = error.message;
         resolve(false);
-      })
-  })
+      });
+  });
 }
-function signOutOfAccount(){
-    signOut(auth).then(() => {
-        // Signed out
-    }).catch((error) => {
-        // error?
+
+function signOutOfAccount() {
+  signOut(auth)
+    .then(() => {
+      // Signed out
     })
+    .catch((error) => {
+      // error?
+    });
 }
-async function resetPassword(email){
+
+async function resetPassword(email) {
   try {
     sendPasswordResetEmail(auth, email);
     return true;
   } catch (error) {
-    console.error(error)
+    console.error(error);
     return false;
   }
 }
 
 export default {
-    createAccount,
-    loginToAccount,
-    signOutOfAccount,
-    resetPassword
-}
+  createAccount,
+  loginToAccount,
+  signOutOfAccount,
+  resetPassword,
+};

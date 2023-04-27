@@ -1,8 +1,8 @@
-import dotenv from "dotenv/config";
-import validateUid from "./validateUid.js";
+import dotenv from 'dotenv/config';
+import validateid from '../../util/validateid.js';
 
 export const requireLogin = (req, res, next) => {
-  if (validateUid(req.session.userkey)) {
+  if (validateid(req.session.userkey)) {
     next();
   } else {
     res.redirect('/login');
